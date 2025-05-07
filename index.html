@@ -12,21 +12,6 @@
       color: #003366;
     }
 
-    #mensagem {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      display: none;
-      z-index: 9999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      font-weight: bold;
-    }
-
     #top-lanches {
       background-color: #ffecb3;
       padding: 10px;
@@ -99,11 +84,20 @@
       margin-top: 20px;
       text-align: left;
     }
+
+    #mensagemAdicionado {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      max-width: 300px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <div id="mensagem"></div>
-
   <div id="top-lanches">
     Hoje temos: <span id="lanchesDiaTopo">Cuscuz, Bolo de Pote e Cremosinho!</span>
   </div>
@@ -121,7 +115,7 @@
 
   <div class="container" id="cardapio">
     <h2>Cardápio</h2>
-    <!-- Cards dos produtos -->
+    <div id="mensagemAdicionado"></div>
     <div class="card"><h3>Brigadeiro</h3><p>Tradicional, docinho e delicioso.</p><p><strong>R$ 1,00</strong></p><button class="button" onclick="adicionar('Brigadeiro')">Adicionar</button></div>
     <div class="card"><h3>Sanduíche Natural</h3><p>Fresco, saudável e saboroso.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Sanduíche Natural')">Adicionar</button></div>
     <div class="card"><h3>Bolo</h3><p>Caseiro e fofinho.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
@@ -152,8 +146,10 @@
     <h2>Carrinho</h2>
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
     <div id="totalCarrinho" style="font-weight:bold; margin-top:10px;"></div>
-    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
-    <a class="button" id="linkWhatsapp" href="#" target="_blank" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
+    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 15px;">
+      <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
+      <a class="button" id="linkWhatsapp" href="#" target="_blank">Enviar Pedido pelo WhatsApp</a>
+    </div>
   </div>
 
   <script>
@@ -174,7 +170,16 @@
     function adicionar(nome) {
       carrinho[nome] = (carrinho[nome] || 0) + 1;
       atualizarCarrinho();
-      mostrarMensagem(`${nome} foi adicionado ao carrinho!`);
+      mostrarMensagemAdicionado(nome);
+    }
+
+    function mostrarMensagemAdicionado(item) {
+      const mensagem = document.getElementById("mensagemAdicionado");
+      mensagem.textContent = `"${item}" foi adicionado ao carrinho!`;
+      mensagem.style.display = "block";
+      setTimeout(() => {
+        mensagem.style.display = "none";
+      }, 2000);
     }
 
     function atualizarCarrinho() {
@@ -229,30 +234,21 @@
 
     function editarLanches() {
       const senha = document.getElementById('senha').value;
-      const senhaCorreta = "10275";
+      const senhaCorreta = "10275"; // Aqui você pode mudar a senha
 
       if (senha === senhaCorreta) {
         const novos = prompt("Digite os lanches do dia separados por vírgula:");
         if (novos) {
           document.getElementById('lanchesDia').textContent = novos;
           document.getElementById('lanchesDiaTopo').textContent = novos;
-          mostrarMensagem("Lanches do dia atualizados!");
+          alert("Lanches do dia atualizados!");
         }
       } else {
-        mostrarMensagem("Senha incorreta!");
+        alert("Senha incorreta!");
       }
 
       document.getElementById('formularioAdmin').style.display = 'none';
     }
-
-    function mostrarMensagem(texto) {
-      const msg = document.getElementById('mensagem');
-      msg.textContent = texto;
-      msg.style.display = 'block';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 2000);
-    }
   </script>
 </body>
-</html><!DOCTYPE html>
+</html>
