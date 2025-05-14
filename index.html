@@ -7,23 +7,14 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
       color: #003366;
-    }
-
-    #top-lanches {
-      background-color: #ffecb3;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: #333;
     }
 
     header {
       background-color: #003366;
-      color: white;
+      color: #fff;
       padding: 20px;
       text-align: center;
     }
@@ -53,7 +44,6 @@
       padding: 20px;
       margin: 15px auto;
       max-width: 400px;
-      transition: all 0.3s ease;
     }
 
     .button {
@@ -63,7 +53,6 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     .button:hover {
@@ -76,110 +65,75 @@
     }
 
     li {
-      margin-bottom: 8px;
-      transition: all 0.3s ease;
+      margin-bottom: 10px;
     }
 
-    .admin-section {
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    #mensagemAdicionado {
-      background-color: #d4edda;
-      color: #155724;
-      padding: 10px;
-      margin: 10px auto;
-      border: 1px solid #c3e6cb;
-      border-radius: 5px;
-      max-width: 300px;
+    #mensagemAdicao {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #0055aa;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
       display: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div id="top-lanches">
-    Hoje temos: <span id="lanchesDiaTopo">Cuscuz, Bolo de Pote e Cremosinho!</span>
-  </div>
-
   <header>
     <h1>Lanches do Nono</h1>
-    <p>Sabores feitos com carinho para ajudar na nossa formatura!</p>
+    <p>Sabores feitos com carinho para ajudar na minha formatura!</p>
   </header>
 
   <nav>
     <a href="#cardapio">Cardápio</a>
-    <a href="#lanchesDoDia">Lanches do Dia</a>
     <a href="#carrinho">Carrinho</a>
   </nav>
 
   <div class="container" id="cardapio">
     <h2>Cardápio</h2>
-    <div id="mensagemAdicionado"></div>
-    <div class="card"><h3>Brigadeiro</h3><p>Tradicional, docinho e delicioso.</p><p><strong>R$ 1,00</strong></p><button class="button" onclick="adicionar('Brigadeiro')">Adicionar</button></div>
-    <div class="card"><h3>Sanduíche Natural</h3><p>Fresco, saudável e saboroso.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Sanduíche Natural')">Adicionar</button></div>
-    <div class="card"><h3>Bolo</h3><p>Caseiro e fofinho.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
-    <div class="card"><h3>Refrigerante no Copo</h3><p>Refrescante e gelado.</p><p><strong>R$ 1,50</strong></p><button class="button" onclick="adicionar('Refrigerante no Copo')">Adicionar</button></div>
-    <div class="card"><h3>Refrigerante Garrafinha</h3><p>Ideal para levar com você.</p><p><strong>R$ 3,00</strong></p><button class="button" onclick="adicionar('Refrigerante Garrafinha')">Adicionar</button></div>
-    <div class="card"><h3>Cuscuz</h3><p>Delicioso e tradicional.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
-    <div class="card"><h3>Cremosinho</h3><p>Gelado e saboroso, perfeito para o calor.</p><p><strong>R$ 1,00</strong></p><button class="button" onclick="adicionar('Cremosinho')">Adicionar</button></div>
-    <div class="card"><h3>Bolo de Pote</h3><p>Bolo com camadas cremosas no pote.</p><p><strong>R$ 10,00</strong></p><button class="button" onclick="adicionar('Bolo de Pote')">Adicionar</button></div>
-    <div class="card"><h3>Salgado no Copo</h3><p>Vários salgadinhos servidos no copo.</p><p><strong>R$ 5,00</strong></p><button class="button" onclick="adicionar('Salgado no Copo')">Adicionar</button></div>
-    <div class="card"><h3>Pipoca</h3><p>Docinha ou salgada, você escolhe!</p><p><strong>R$ 1,00</strong></p><button class="button" onclick="adicionar('Pipoca')">Adicionar</button></div>
-  </div>
-
-  <div class="container" id="lanchesDoDia">
-    <h2>Lanches do Dia</h2>
-    <div>
-      <p>Hoje temos: <strong id="lanchesDia">Cuscuz, Bolo de Pote e Cremosinho!</strong></p>
-    </div>
-    <div class="admin-section">
-      <button class="button" onclick="mostrarFormularioAdmin()">Editar Lanches do Dia</button>
-      <div id="formularioAdmin" style="display:none;">
-        <input type="password" id="senha" placeholder="Digite a senha para editar" />
-        <button class="button" onclick="editarLanches()">Enviar</button>
-      </div>
-    </div>
+    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Pizza')">Adicionar</button></div>
+    <div class="card"><h3>Salgado</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgado')">Adicionar</button></div>
+    <div class="card"><h3>Brigadeiro</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Brigadeiro')">Adicionar</button></div>
+    <div class="card"><h3>Pipoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Pipoca')">Adicionar</button></div>
+    <div class="card"><h3>Pirulito</h3><p>R$ 0,50</p><button class="button" onclick="adicionar('Pirulito')">Adicionar</button></div>
+    <div class="card"><h3>Refri (copo)</h3><p>R$ 1,50</p><button class="button" onclick="adicionar('Refri (copo)')">Adicionar</button></div>
+    <div class="card"><h3>Refri garrafinha</h3><p>R$ 3,00</p><button class="button" onclick="adicionar('Refri garrafinha')">Adicionar</button></div>
+    <div class="card"><h3>Cremosinho</h3><p>R$ 1,50</p><button class="button" onclick="adicionar('Cremosinho')">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
     <h2>Carrinho</h2>
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
-    <div id="totalCarrinho" style="font-weight:bold; margin-top:10px;"></div>
-    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 15px;">
-      <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
-      <a class="button" id="linkWhatsapp" href="#" target="_blank">Enviar Pedido pelo WhatsApp</a>
-    </div>
+    <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
+    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <a class="button" id="linkWhatsapp" href="#" target="_blank" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
   </div>
+
+  <div id="mensagemAdicao"></div>
 
   <script>
     const carrinho = {};
     const precos = {
-      'Brigadeiro': 1.00,
-      'Sanduíche Natural': 5.00,
       'Bolo': 5.00,
-      'Refrigerante no Copo': 1.50,
-      'Refrigerante Garrafinha': 3.00,
-      'Cuscuz': 5.00,
-      'Cremosinho': 1.00,
-      'Bolo de Pote': 10.00,
-      'Salgado no Copo': 5.00,
-      'Pipoca': 1.00
+      'Pizza': 5.00,
+      'Salgado': 5.00,
+      'Brigadeiro': 2.00,
+      'Pipoca': 1.00,
+      'Pirulito': 0.50,
+      'Refri (copo)': 1.50,
+      'Refri garrafinha': 3.00,
+      'Cremosinho': 1.50
     };
 
     function adicionar(nome) {
       carrinho[nome] = (carrinho[nome] || 0) + 1;
       atualizarCarrinho();
-      mostrarMensagemAdicionado(nome);
-    }
-
-    function mostrarMensagemAdicionado(item) {
-      const mensagem = document.getElementById("mensagemAdicionado");
-      mensagem.textContent = `"${item}" foi adicionado ao carrinho!`;
-      mensagem.style.display = "block";
-      setTimeout(() => {
-        mensagem.style.display = "none";
-      }, 2000);
+      mostrarMensagem(`${nome} adicionado ao carrinho!`);
     }
 
     function atualizarCarrinho() {
@@ -222,32 +176,17 @@
     }
 
     function limparCarrinho() {
-      for (let item in carrinho) {
-        delete carrinho[item];
-      }
+      for (let item in carrinho) delete carrinho[item];
       atualizarCarrinho();
     }
 
-    function mostrarFormularioAdmin() {
-      document.getElementById('formularioAdmin').style.display = 'block';
-    }
-
-    function editarLanches() {
-      const senha = document.getElementById('senha').value;
-      const senhaCorreta = "10275"; // Aqui você pode mudar a senha
-
-      if (senha === senhaCorreta) {
-        const novos = prompt("Digite os lanches do dia separados por vírgula:");
-        if (novos) {
-          document.getElementById('lanchesDia').textContent = novos;
-          document.getElementById('lanchesDiaTopo').textContent = novos;
-          alert("Lanches do dia atualizados!");
-        }
-      } else {
-        alert("Senha incorreta!");
-      }
-
-      document.getElementById('formularioAdmin').style.display = 'none';
+    function mostrarMensagem(texto) {
+      const msg = document.getElementById('mensagemAdicao');
+      msg.textContent = texto;
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 2000);
     }
   </script>
 </body>
