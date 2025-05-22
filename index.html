@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lanches do Nono</title>
   <style>
     body {
@@ -9,93 +10,127 @@
       font-family: Arial, sans-serif;
       background-color: #fff;
       color: #003366;
-    }header {
-  background-color: #003366;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
+    }
 
-nav {
-  background-color: #0055aa;
-  padding: 10px;
-  text-align: center;
-}
+    header {
+      background-color: #003366;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
+    nav {
+      background-color: #0055aa;
+      padding: 10px;
+      text-align: center;
+    }
 
-.container {
-  padding: 30px;
-  text-align: center;
-}
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.card {
-  background-color: #e6f0ff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 15px auto;
-  max-width: 400px;
-}
+    .container {
+      padding: 30px;
+      text-align: center;
+    }
 
-.button {
-  background-color: #003366;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+    .card {
+      background-color: #e6f0ff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 400px;
+    }
 
-.button:hover {
-  background-color: #0055aa;
-}
+    .button {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
+    .button:hover {
+      background-color: #0055aa;
+    }
 
-li {
-  margin-bottom: 10px;
-}
+    ul {
+      list-style: none;
+      padding: 0;
+    }
 
-input[type="text"] {
-  padding: 10px;
-  width: 250px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+    li {
+      margin-bottom: 10px;
+    }
 
-#mensagemAdicao {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #0055aa;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  display: none;
-  font-weight: bold;
-}
+    #mensagemAdicao {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #0055aa;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      font-weight: bold;
+    }
 
+    .pix-info {
+      background-color: #ffe6cc;
+      border: 1px solid #ff9900;
+      padding: 15px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 500px;
+    }
+
+    .input-group {
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 400px;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Lanches do Nono</h1>
     <p>Sabores feitos com carinho para ajudar na minha formatura!</p>
-  </header>  <nav>
+  </header>
+
+  <nav>
     <a href="#cardapio">Cardápio</a>
     <a href="#carrinho">Carrinho</a>
-  </nav>  <div class="container" id="cardapio">
+  </nav>
+
+  <div class="pix-info">
+    <p><strong>Chave Pix:</strong> ab804ccc-480c-4274-a7d9-59d41c90c18d</p>
+    <p><strong>Titular:</strong> Ana Dandara Dos Santos Rodrigues</p>
+  </div>
+
+  <div class="container">
+    <div class="input-group">
+      <label for="nomeAluno"><strong>Digite o nome do Aluno:</strong></label><br />
+      <input type="text" id="nomeAluno" placeholder="Ex: João Silva" />
+    </div>
+    <div class="input-group">
+      <label for="turmaAluno"><strong>Turma:</strong></label><br />
+      <input type="text" id="turmaAluno" placeholder="Informe a turma" />
+    </div>
+  </div>
+
+  <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
     <div class="card"><h3>Mini Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini Pizza')">Adicionar</button></div>
     <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
@@ -104,15 +139,19 @@ input[type="text"] {
     <div class="card"><h3>Pipoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Pipoca')">Adicionar</button></div>
     <div class="card"><h3>Refri (copo)</h3><p>R$ 1,50</p><button class="button" onclick="adicionar('Refri (copo)')">Adicionar</button></div>
     <div class="card"><h3>Refri garrafinha</h3><p>R$ 3,00</p><button class="button" onclick="adicionar('Refri garrafinha')">Adicionar</button></div>
-  </div>  <div class="container" id="carrinho">
+  </div>
+
+  <div class="container" id="carrinho">
     <h2>Carrinho</h2>
-    <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno" oninput="atualizarCarrinho()" />
-    <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" oninput="atualizarCarrinho()" />
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
     <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
     <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
     <a class="button" id="linkWhatsapp" href="#" target="_blank" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
-  </div>  <div id="mensagemAdicao"></div>  <script>
+  </div>
+
+  <div id="mensagemAdicao"></div>
+
+  <script>
     const carrinho = {};
     const precos = {
       'Mini Pizza': 5.00,
@@ -133,9 +172,9 @@ input[type="text"] {
     function atualizarCarrinho() {
       const lista = document.getElementById('listaCarrinho');
       const totalElem = document.getElementById('totalCarrinho');
-      const nomeAluno = document.getElementById('nomeAluno').value.trim();
-      const turmaAluno = document.getElementById('turmaAluno').value.trim();
       const nomes = Object.keys(carrinho);
+      const nomeAluno = document.getElementById('nomeAluno').value || 'Não informado';
+      const turmaAluno = document.getElementById('turmaAluno').value || 'Não informada';
 
       if (nomes.length === 0) {
         lista.innerHTML = 'Seu carrinho está vazio.';
@@ -160,11 +199,8 @@ input[type="text"] {
       lista.innerHTML = html;
       totalElem.textContent = `Total: R$ ${total.toFixed(2)}`;
 
-      let textoPedido = nomes.map(nome => `${nome} (x${carrinho[nome]})`).join('\n');
-      if (nomeAluno) textoPedido = `Nome do aluno: ${nomeAluno}\n` + textoPedido;
-      if (turmaAluno) textoPedido = `Turma: ${turmaAluno}\n` + textoPedido;
-      textoPedido += `\n\nTotal: R$ ${total.toFixed(2)}`;
-
+      const textoPedido = nomes.map(nome => `${nome} (x${carrinho[nome]})`).join('\n') +
+        `\nTotal: R$ ${total.toFixed(2)}\n\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
       const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
       document.getElementById('linkWhatsapp').href = `https://wa.me/559884078358?text=${texto}`;
     }
@@ -188,5 +224,9 @@ input[type="text"] {
         msg.style.display = 'none';
       }, 2000);
     }
-  </script></body>
+
+    document.getElementById('nomeAluno').addEventListener('input', atualizarCarrinho);
+    document.getElementById('turmaAluno').addEventListener('input', atualizarCarrinho);
+  </script>
+</body>
 </html>
