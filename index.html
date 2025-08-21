@@ -1,206 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lanches do Nono</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio - 9º Ano</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #003366;
+      margin: 20px;
+      background: #f8f9fa;
     }
-
-    header {
-      background-color: #003366;
-      color: #fff;
-      padding: 20px;
+    h1 {
       text-align: center;
+      color: #333;
     }
-
-    nav {
-      background-color: #0055aa;
-      padding: 10px;
-      text-align: center;
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
     }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 30px;
-      text-align: center;
-    }
-
     .card {
-      background-color: #e6f0ff;
-      border: 1px solid #ccc;
+      background: #fff;
       border-radius: 10px;
-      padding: 20px;
-      margin: 15px auto;
-      max-width: 400px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
-
+    .card h3 {
+      margin: 10px 0;
+      color: #444;
+    }
+    .card p {
+      font-size: 18px;
+      margin: 5px 0;
+      color: #666;
+    }
     .button {
-      background-color: #003366;
-      color: white;
-      padding: 10px 20px;
+      background: #28a745;
+      color: #fff;
       border: none;
+      padding: 8px 12px;
+      margin-top: 10px;
       border-radius: 5px;
       cursor: pointer;
     }
-
     .button:hover {
-      background-color: #0055aa;
+      background: #218838;
     }
-
-    ul {
+    #carrinho {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    #carrinho h2 {
+      margin-bottom: 15px;
+    }
+    #lista-carrinho {
       list-style: none;
       padding: 0;
     }
-
-    li {
-      margin-bottom: 10px;
+    #lista-carrinho li {
+      margin: 5px 0;
+      font-size: 16px;
     }
-
-    #mensagemAdicao {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #0055aa;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      display: none;
+    #total {
       font-weight: bold;
-    }
-
-    #pix-info {
-      margin-top: 40px;
-      background-color: #f3f3f3;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+      margin-top: 15px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Lanches do Nono</h1>
-    <p>Sabores feitos com carinho para ajudar na minha formatura!</p>
-  </header>
+  <h1>Cardápio - 9º Ano</h1>
 
-  <nav>
-    <a href="#cardapio">Cardápio</a>
-    <a href="#carrinho">Carrinho</a>
-  </nav>
-
-  <div class="container" id="cardapio">
-    <h2>Cardápio da Semana</h2>
+  <div class="menu">
     <div class="card"><h3>Salgadinho</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgadinho')">Adicionar</button></div>
     <div class="card"><h3>Cachorro quente</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cachorro quente')">Adicionar</button></div>
-    <div class="card"><h3>Bolo de pote</h3><p>R$ 10,00</p><button class="button" onclick="adicionar('Bolo de pote')">Adicionar</button></div>
+    <div class="card"><h3>Bolo de pote</h3><p>R$ 8,00</p><button class="button" onclick="adicionar('Bolo de pote')">Adicionar</button></div>
     <div class="card"><h3>Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Pizza')">Adicionar</button></div>
     <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
     <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
   </div>
 
-  <div class="container" id="carrinho">
+  <div id="carrinho">
     <h2>Carrinho</h2>
-    <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 10px;">
-    <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 20px;"><br>
-    <div id="listaCarrinho">Seu carrinho está vazio.</div>
-    <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
-    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
-    <a class="button" id="linkWhatsapp" href="#" target="_blank" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
-
-    <div id="pix-info">
-      <h3>Pagamento via PIX</h3>
-      <p><strong>Chave PIX:</strong> ab804ccc-480c-4274-a7d9-59d41c90c18d</p>
-      <p><strong>Nome:</strong> Ana Dandara Dos Santos Rodrigues</p>
-      <p>Após o pagamento, envie o comprovante junto com o pedido via WhatsApp.</p>
-    </div>
+    <ul id="lista-carrinho"></ul>
+    <p id="total">Total: R$ 0,00</p>
   </div>
 
-  <div id="mensagemAdicao"></div>
-
   <script>
-    const carrinho = {};
     const precos = {
       'Salgadinho': 5.00,
       'Cachorro quente': 5.00,
-      'Bolo de pote': 10.00,
+      'Bolo de pote': 8.00, // atualizado
       'Pizza': 5.00,
       'Paçoca': 1.00,
       'Refri': 2.00
     };
 
-    function adicionar(nome) {
-      carrinho[nome] = (carrinho[nome] || 0) + 1;
+    let carrinho = [];
+
+    function adicionar(item) {
+      carrinho.push(item);
       atualizarCarrinho();
-      mostrarMensagem(`${nome} adicionado ao carrinho!`);
     }
 
     function atualizarCarrinho() {
-      const lista = document.getElementById('listaCarrinho');
-      const totalElem = document.getElementById('totalCarrinho');
-      const nomes = Object.keys(carrinho);
-
-      if (nomes.length === 0) {
-        lista.innerHTML = 'Seu carrinho está vazio.';
-        totalElem.textContent = '';
-        document.getElementById('linkWhatsapp').href = '#';
-        return;
-      }
-
-      let html = '<ul>';
+      const lista = document.getElementById('lista-carrinho');
+      lista.innerHTML = '';
       let total = 0;
 
-      nomes.forEach(nome => {
-        const quantidade = carrinho[nome];
-        const precoItem = precos[nome] * quantidade;
-        total += precoItem;
-        html += `<li>${nome} (x${quantidade}) - R$ ${precoItem.toFixed(2)}
-                  <button onclick="alterarQuantidade('${nome}', 1)">+</button>
-                  <button onclick="alterarQuantidade('${nome}', -1)">–</button></li>`;
+      carrinho.forEach(i => {
+        const li = document.createElement('li');
+        li.textContent = i + ' - R$ ' + precos[i].toFixed(2).replace('.', ',');
+        lista.appendChild(li);
+        total += precos[i];
       });
 
-      html += '</ul>';
-      lista.innerHTML = html;
-      totalElem.textContent = `Total: R$ ${total.toFixed(2)}`;
-
-      const nomeAluno = document.getElementById('nomeAluno').value;
-      const turmaAluno = document.getElementById('turmaAluno').value;
-      const textoPedido = nomes.map(nome => `${nome} (x${carrinho[nome]})`).join('\n') +
-        `\nTotal: R$ ${total.toFixed(2)}\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
-      const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
-      document.getElementById('linkWhatsapp').href = `https://wa.me/559884078358?text=${texto}`;
-    }
-
-    function alterarQuantidade(nome, valor) {
-      carrinho[nome] += valor;
-      if (carrinho[nome] <= 0) delete carrinho[nome];
-      atualizarCarrinho();
-    }
-
-    function limparCarrinho() {
-      for (let item in carrinho) delete carrinho[item];
-      atualizarCarrinho();
-    }
-
-    function mostrarMensagem(texto) {
-      const msg = document.getElementById('mensagemAdicao');
-      msg.textContent = texto;
-      msg.style.display = 'block';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 2000);
+      document.getElementById('total').textContent = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
     }
   </script>
 </body>
