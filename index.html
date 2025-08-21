@@ -103,13 +103,12 @@
 
   <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
-    <div class="card"><h3>Mini pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini pizza')">Adicionar</button></div>
-    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
-    <div class="card"><h3>Espetinho de brigadeiro</h3><p>R$ 4,00</p><button class="button" onclick="adicionar('Espetinho de brigadeiro')">Adicionar</button></div>
-    <div class="card"><h3>Refri (garrafa)</h3><p>R$ 3,00</p><button class="button" onclick="adicionar('Refri (garrafa)')">Adicionar</button></div>
-    <div class="card"><h3>Refri (copo)</h3><p>R$ 2,50</p><button class="button" onclick="adicionar('Refri (copo)')">Adicionar</button></div>
-    <div class="card"><h3>Pipoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Pipoca')">Adicionar</button></div>
-    <div class="card"><h3>Cremosinho</h3><p>R$ 1,50</p><button class="button" onclick="adicionar('Cremosinho')">Adicionar</button></div>
+    <div class="card"><h3>Salgadinho</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgadinho')">Adicionar</button></div>
+    <div class="card"><h3>Cachorro quente</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cachorro quente')">Adicionar</button></div>
+    <div class="card"><h3>Bolo de pote</h3><p>R$ 10,00</p><button class="button" onclick="adicionar('Bolo de pote')">Adicionar</button></div>
+    <div class="card"><h3>Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Pizza')">Adicionar</button></div>
+    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
+    <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -134,13 +133,12 @@
   <script>
     const carrinho = {};
     const precos = {
-      'Mini pizza': 5.00,
-      'Bolo': 5.00,
-      'Espetinho de brigadeiro': 4.00,
-      'Refri (garrafa)': 3.00,
-      'Refri (copo)': 2.50,
-      'Pipoca': 1.00,
-      'Cremosinho': 1.50
+      'Salgadinho': 5.00,
+      'Cachorro quente': 5.00,
+      'Bolo de pote': 10.00,
+      'Pizza': 5.00,
+      'Paçoca': 1.00,
+      'Refri': 2.00
     };
 
     function adicionar(nome) {
