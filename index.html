@@ -102,17 +102,19 @@
   </nav>
 
   <div class="container" id="cardapio">
-    <h2>Cardápio da Semana</h2>
-    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
-    <div class="card"><h3>Empada</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Empada')">Adicionar</button></div>
-    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
-    <div class="card"><h3>Brigadeiro</h3><p>R$ 4,00</p><button class="button" onclick="adicionar('Brigadeiro')">Adicionar</button></div>
-    <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
-
     <h2>Combos</h2>
-    <div class="card"><h3>Combo: Bolo + 2 Empadas + Refri</h3><p>R$ 9,00</p><button class="button" onclick="adicionar('Combo 1')">Adicionar</button></div>
-    <div class="card"><h3>Combo: 3 Empadas</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Combo 2')">Adicionar</button></div>
-    <div class="card"><h3>Combo: 3 Empadas + Refri</h3><p>R$ 6,00</p><button class="button" onclick="adicionar('Combo 3')">Adicionar</button></div>
+    <div class="card"><h3>Combo 1</h3><p>Cuscuz + Bolo + Refri = R$ 11,00</p><button class="button" onclick="adicionar('Combo 1')">Adicionar</button></div>
+    <div class="card"><h3>Combo 2</h3><p>Cuscuz + Sucão + Refri = R$ 8,00</p><button class="button" onclick="adicionar('Combo 2')">Adicionar</button></div>
+    <div class="card"><h3>Combo 3</h3><p>Cachorro-quente + Refri + Sucão = R$ 8,00</p><button class="button" onclick="adicionar('Combo 3')">Adicionar</button></div>
+    <div class="card"><h3>Combo 4</h3><p>Bolo + Sucão + Refri = R$ 8,00</p><button class="button" onclick="adicionar('Combo 4')">Adicionar</button></div>
+    <div class="card"><h3>Combo 5</h3><p>Cuscuz + Paçoca + Refri = R$ 7,00</p><button class="button" onclick="adicionar('Combo 5')">Adicionar</button></div>
+
+    <h2>Lanches Separados</h2>
+    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
+    <div class="card"><h3>Cachorro-quente</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cachorro-quente')">Adicionar</button></div>
+    <div class="card"><h3>Sucão</h3><p>R$ 3,00</p><button class="button" onclick="adicionar('Sucão')">Adicionar</button></div>
+    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refrigerante')">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -137,14 +139,16 @@
   <script>
     const carrinho = {};
     const precos = {
+      'Combo 1': 11.00,
+      'Combo 2': 8.00,
+      'Combo 3': 8.00,
+      'Combo 4': 8.00,
+      'Combo 5': 7.00,
       'Bolo': 5.00,
-      'Empada': 2.00,
-      'Paçoca': 1.00,
-      'Brigadeiro': 4.00,
-      'Refri': 2.00,
-      'Combo 1': 9.00,
-      'Combo 2': 5.00,
-      'Combo 3': 6.00
+      'Cuscuz': 5.00,
+      'Cachorro-quente': 5.00,
+      'Sucão': 3.00,
+      'Refrigerante': 2.00
     };
 
     function adicionar(nome) {
