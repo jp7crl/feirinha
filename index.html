@@ -59,19 +59,6 @@
       background-color: #0055aa;
     }
 
-    #mensagemAdicao {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: green;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      display: none;
-      font-weight: bold;
-    }
-
     #pix-info {
       margin-top: 40px;
       background-color: #f3f3f3;
@@ -94,13 +81,13 @@
 
   <div class="container" id="cardapio">
     <h2>Lanches</h2>
-    <div class="card"><h3>Bolo</h3><p>R$ 7,00</p><button class="button" onclick="adicionarAoCarrinho('Bolo', 7)">Adicionar</button></div>
-    <div class="card"><h3>Salgado grande</h3><p>R$ 8,00</p><button class="button" onclick="adicionarAoCarrinho('Salgado grande', 8)">Adicionar</button></div>
-    <div class="card"><h3>Suco natural</h3><p>R$ 3,00</p><button class="button" onclick="adicionarAoCarrinho('Suco natural', 3)">Adicionar</button></div>
-    <div class="card"><h3>Misto natural</h3><p>R$ 5,00</p><button class="button" onclick="adicionarAoCarrinho('Misto natural', 5)">Adicionar</button></div>
-    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionarAoCarrinho('Paçoca', 1)">Adicionar</button></div>
-    <div class="card"><h3>Pirulito</h3><p>R$ 1,00</p><button class="button" onclick="adicionarAoCarrinho('Pirulito', 1)">Adicionar</button></div>
-    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="adicionarAoCarrinho('Refrigerante', 2)">Adicionar</button></div>
+    <div class="card"><h3>Bolo</h3><p>R$ 7,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Salgado grande</h3><p>R$ 8,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Suco natural</h3><p>R$ 3,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Misto natural</h3><p>R$ 5,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Pirulito</h3><p>R$ 1,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -109,8 +96,8 @@
     <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 20px;"><br>
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
     <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
-    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
-    <a class="button" href="#" onclick="enviarWhatsApp()" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
+    <button class="button" onclick="bloquear()">Limpar Carrinho</button>
+    <a class="button" href="#" onclick="bloquear()" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
 
     <div id="pix-info">
       <h3>Pagamento via PIX</h3>
@@ -120,70 +107,9 @@
     </div>
   </div>
 
-  <div id="mensagemAdicao"></div>
-
   <script>
-    let carrinho = [];
-    let total = 0;
-
-    function adicionarAoCarrinho(item, preco) {
-      carrinho.push({ item, preco });
-      total += preco;
-      atualizarCarrinho();
-      mostrarMensagem(item + " adicionado!");
-    }
-
-    function atualizarCarrinho() {
-      const lista = document.getElementById('listaCarrinho');
-      const totalDiv = document.getElementById('totalCarrinho');
-
-      if (carrinho.length === 0) {
-        lista.textContent = "Seu carrinho está vazio.";
-        totalDiv.textContent = "";
-        return;
-      }
-
-      lista.innerHTML = "";
-      carrinho.forEach((produto, index) => {
-        const p = document.createElement("p");
-        p.textContent = produto.item + " - R$ " + produto.preco.toFixed(2).replace(".", ",");
-        lista.appendChild(p);
-      });
-
-      totalDiv.textContent = "Total: R$ " + total.toFixed(2).replace(".", ",");
-    }
-
-    function limparCarrinho() {
-      carrinho = [];
-      total = 0;
-      atualizarCarrinho();
-    }
-
-    function enviarWhatsApp() {
-      if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-      }
-      const nome = document.getElementById('nomeAluno').value.trim();
-      const turma = document.getElementById('turmaAluno').value.trim();
-      let mensagem = "Pedido:\n";
-      carrinho.forEach(p => {
-        mensagem += "- " + p.item + " R$ " + p.preco.toFixed(2).replace(".", ",") + "\n";
-      });
-      mensagem += "Total: R$ " + total.toFixed(2).replace(".", ",") + "\n";
-      if (nome) mensagem += "Aluno: " + nome + "\n";
-      if (turma) mensagem += "Turma: " + turma + "\n";
-      const url = "https://wa.me/559884078358?text=" + encodeURIComponent(mensagem);
-      window.open(url, "_blank");
-    }
-
-    function mostrarMensagem(texto) {
-      const msg = document.getElementById('mensagemAdicao');
-      msg.textContent = texto;
-      msg.style.display = 'block';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 2000);
+    function bloquear() {
+      alert("Site indisponível");
     }
   </script>
 </body>
