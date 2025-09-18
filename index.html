@@ -81,13 +81,11 @@
 
   <div class="container" id="cardapio">
     <h2>Lanches</h2>
-    <div class="card"><h3>Bolo</h3><p>R$ 7,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Salgado grande</h3><p>R$ 8,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Suco natural</h3><p>R$ 3,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Misto natural</h3><p>R$ 5,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Pirulito</h3><p>R$ 1,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
-    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="bloquear()">Adicionar</button></div>
+    <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz', 5)">Adicionar</button></div>
+    <div class="card"><h3>Mini pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini pizza', 5)">Adicionar</button></div>
+    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo', 5)">Adicionar</button></div>
+    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refrigerante', 2)">Adicionar</button></div>
+    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca', 1)">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -96,8 +94,8 @@
     <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 20px;"><br>
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
     <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
-    <button class="button" onclick="bloquear()">Limpar Carrinho</button>
-    <a class="button" href="#" onclick="bloquear()" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
+    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <a class="button" href="#" onclick="enviarPedido()" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
 
     <div id="pix-info">
       <h3>Pagamento via PIX</h3>
@@ -108,8 +106,63 @@
   </div>
 
   <script>
-    function bloquear() {
-      alert("Site indisponível");
+    let carrinho = [];
+
+    function adicionar(item, preco) {
+      carrinho.push({ item, preco });
+      atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+      const listaCarrinho = document.getElementById("listaCarrinho");
+      const totalCarrinho = document.getElementById("totalCarrinho");
+
+      if (carrinho.length === 0) {
+        listaCarrinho.innerHTML = "Seu carrinho está vazio.";
+        totalCarrinho.innerHTML = "";
+        return;
+      }
+
+      let html = "<ul style='list-style:none; padding:0;'>";
+      let total = 0;
+      carrinho.forEach((produto, index) => {
+        html += `<li>${produto.item} - R$ ${produto.preco.toFixed(2)} <button onclick="remover(${index})">❌</button></li>`;
+        total += produto.preco;
+      });
+      html += "</ul>";
+
+      listaCarrinho.innerHTML = html;
+      totalCarrinho.innerHTML = "Total: R$ " + total.toFixed(2);
+    }
+
+    function remover(index) {
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    }
+
+    function limparCarrinho() {
+      carrinho = [];
+      atualizarCarrinho();
+    }
+
+    function enviarPedido() {
+      const nome = document.getElementById("nomeAluno").value;
+      const turma = document.getElementById("turmaAluno").value;
+
+      if (!nome || !turma) {
+        alert("Por favor, preencha o nome e a turma do aluno.");
+        return;
+      }
+
+      let mensagem = `Pedido de ${nome} - Turma ${turma}:%0A`;
+      let total = 0;
+      carrinho.forEach(produto => {
+        mensagem += `- ${produto.item} R$ ${produto.preco.toFixed(2)}%0A`;
+        total += produto.preco;
+      });
+      mensagem += `Total: R$ ${total.toFixed(2)}`;
+
+      window.open(`https://wa.me/5588996363043?text=${mensagem}`, "_blank");
     }
   </script>
 </body>
