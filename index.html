@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lanches</title>
   <style>
     body {
@@ -121,7 +121,8 @@
         alert('Adicione itens ao carrinho antes de enviar o pedido!');
         return;
       }
-      const numero = '558984078358';
+      // Número corrigido para +55 98 8407-8358 -> wa.me/559884078358
+      const numero = '559884078358';
       const texto = encodeURIComponent(`Olá! Gostaria de pedir:\n\n${carrinho.join('\n')}\n\nTotal: R$ ${calcularTotal().toFixed(2)}`);
       window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
     }
