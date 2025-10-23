@@ -1,167 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lanches do Nono</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanches</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #003366;
+      background-color: #ffeaea;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
-
     header {
-      background-color: #003366;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #0055aa;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
+      background-color: #ff6f61;
       color: white;
-      margin: 0 15px;
-      text-decoration: none;
+      padding: 15px;
+      font-size: 24px;
       font-weight: bold;
     }
-
-    .container {
-      padding: 30px;
-      text-align: center;
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
     }
-
     .card {
-      background-color: #e6f0ff;
-      border: 1px solid #ccc;
+      background-color: white;
       border-radius: 10px;
-      padding: 20px;
-      margin: 15px auto;
-      max-width: 400px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      padding: 15px;
+      width: 150px;
     }
-
+    .card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .card p {
+      margin: 5px 0;
+      color: #555;
+    }
     .button {
-      background-color: #003366;
+      background-color: #ff6f61;
       color: white;
-      padding: 10px 20px;
       border: none;
       border-radius: 5px;
+      padding: 10px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-
     .button:hover {
-      background-color: #0055aa;
+      background-color: #ff3b2f;
     }
-
-    #pix-info {
-      margin-top: 40px;
-      background-color: #f3f3f3;
-      padding: 20px;
+    #carrinho {
+      background-color: white;
+      padding: 15px;
       border-radius: 10px;
-      border: 1px solid #ccc;
+      width: 300px;
+      margin: 20px auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #carrinho h2 {
+      margin-bottom: 10px;
+    }
+    #itens {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    #total {
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Lanches do Nono</h1>
-    <p>Sabores feitos com carinho para ajudar na minha formatura!</p>
-  </header>
+  <header>Lanches</header>
 
-  <nav>
-    <a href="#cardapio">Cardápio</a>
-    <a href="#carrinho">Carrinho</a>
-  </nav>
-
-  <div class="container" id="cardapio">
-    <h2>Lanches</h2>
-    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo', 5)">Adicionar</button></div>
-    <div class="card"><h3>Salgado</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgado', 5)">Adicionar</button></div>
-    <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri', 2)">Adicionar</button></div>
+  <div class="menu">
+    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Salgado</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgado')">Adicionar</button></div>
+    <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
+    <div class="card"><h3>Mini Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini Pizza')">Adicionar</button></div>
   </div>
 
-  <div class="container" id="carrinho">
+  <div id="carrinho">
     <h2>Carrinho</h2>
-    <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 10px;">
-    <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 20px;"><br>
-    <div id="listaCarrinho">Seu carrinho está vazio.</div>
-    <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
-    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
-    <a class="button" href="#" onclick="enviarPedido()" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
-
-    <div id="pix-info">
-      <h3>Pagamento via PIX</h3>
-      <p><strong>Chave PIX:</strong> ab804ccc-480c-4274-a7d9-59d41c90c18d</p>
-      <p><strong>Nome:</strong> Ana Dandara Dos Santos Rodrigues</p>
-      <p>Após o pagamento, envie o comprovante junto com o pedido via WhatsApp.</p>
-    </div>
+    <div id="itens"></div>
+    <p id="total">Total: R$ 0,00</p>
+    <button class="button" onclick="enviarPedido()">Enviar para o WhatsApp</button>
   </div>
 
   <script>
+    const precos = {
+      'Bolo': 5.00,
+      'Salgado': 5.00,
+      'Refri': 2.00,
+      'Mini Pizza': 5.00
+    };
+
     let carrinho = [];
 
-    function adicionar(item, preco) {
-      carrinho.push({ item, preco });
+    function adicionar(item) {
+      carrinho.push(item);
       atualizarCarrinho();
     }
 
     function atualizarCarrinho() {
-      const listaCarrinho = document.getElementById("listaCarrinho");
-      const totalCarrinho = document.getElementById("totalCarrinho");
-
-      if (carrinho.length === 0) {
-        listaCarrinho.innerHTML = "Seu carrinho está vazio.";
-        totalCarrinho.innerHTML = "";
-        return;
-      }
-
-      let html = "<ul style='list-style:none; padding:0;'>";
+      const itensDiv = document.getElementById('itens');
+      itensDiv.innerHTML = '';
       let total = 0;
-      carrinho.forEach((produto, index) => {
-        html += `<li>${produto.item} - R$ ${produto.preco.toFixed(2)} <button onclick="remover(${index})">❌</button></li>`;
-        total += produto.preco;
+      carrinho.forEach(item => {
+        itensDiv.innerHTML += `<p>${item} - R$ ${precos[item].toFixed(2)}</p>`;
+        total += precos[item];
       });
-      html += "</ul>";
-
-      listaCarrinho.innerHTML = html;
-      totalCarrinho.innerHTML = "Total: R$ " + total.toFixed(2);
-    }
-
-    function remover(index) {
-      carrinho.splice(index, 1);
-      atualizarCarrinho();
-    }
-
-    function limparCarrinho() {
-      carrinho = [];
-      atualizarCarrinho();
+      document.getElementById('total').textContent = `Total: R$ ${total.toFixed(2)}`;
     }
 
     function enviarPedido() {
-      const nome = document.getElementById("nomeAluno").value;
-      const turma = document.getElementById("turmaAluno").value;
-
-      if (!nome || !turma) {
-        alert("Por favor, preencha o nome e a turma do aluno.");
+      if (carrinho.length === 0) {
+        alert('Adicione itens ao carrinho antes de enviar o pedido!');
         return;
       }
+      const numero = '558984078358';
+      const texto = encodeURIComponent(`Olá! Gostaria de pedir:\n\n${carrinho.join('\n')}\n\nTotal: R$ ${calcularTotal().toFixed(2)}`);
+      window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
+    }
 
-      let mensagem = `Pedido de ${nome} - Turma ${turma}:%0A`;
-      let total = 0;
-      carrinho.forEach(produto => {
-        mensagem += `- ${produto.item} R$ ${produto.preco.toFixed(2)}%0A`;
-        total += produto.preco;
-      });
-      mensagem += `Total: R$ ${total.toFixed(2)}`;
-
-      // ✅ Número de WhatsApp atualizado
-      window.open(`https://wa.me/559884078358?text=${mensagem}`, "_blank");
+    function calcularTotal() {
+      return carrinho.reduce((total, item) => total + precos[item], 0);
     }
   </script>
 </body>
