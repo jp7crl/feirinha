@@ -103,10 +103,9 @@
 
   <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
-    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
-    <div class="card"><h3>Salgado</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Salgado')">Adicionar</button></div>
+    <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
+    <div class="card"><h3>Mini pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini pizza')">Adicionar</button></div>
     <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
-    <div class="card"><h3>Mini Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini Pizza')">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -131,10 +130,9 @@
   <script>
     const carrinho = {};
     const precos = {
-      'Bolo': 5.00,
-      'Salgado': 5.00,
-      'Refri': 2.00,
-      'Mini Pizza': 5.00
+      'Cuscuz': 5.00,
+      'Mini pizza': 5.00,
+      'Refri': 2.00
     };
 
     function adicionar(nome) {
@@ -177,7 +175,7 @@
         `\nTotal: R$ ${total.toFixed(2)}\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
       const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
 
-      // número CORRIGIDO ↓↓↓
+      // ✅ Número CORRETO mantido
       document.getElementById('linkWhatsapp').href = `https://wa.me/559884078358?text=${texto}`;
     }
 
