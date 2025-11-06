@@ -103,8 +103,10 @@
 
   <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
+
     <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
     <div class="card"><h3>Mini pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini pizza')">Adicionar</button></div>
+    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
     <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
   </div>
 
@@ -132,6 +134,7 @@
     const precos = {
       'Cuscuz': 5.00,
       'Mini pizza': 5.00,
+      'Paçoca': 1.00,
       'Refri': 2.00
     };
 
@@ -175,7 +178,7 @@
         `\nTotal: R$ ${total.toFixed(2)}\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
       const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
 
-      // ✅ Número CORRETO mantido
+      // ✅ Número CORRETO
       document.getElementById('linkWhatsapp').href = `https://wa.me/559884078358?text=${texto}`;
     }
 
