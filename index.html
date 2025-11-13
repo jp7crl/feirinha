@@ -104,10 +104,11 @@
   <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
 
-    <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
-    <div class="card"><h3>Mini pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Mini pizza')">Adicionar</button></div>
+    <div class="card"><h3>Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Pizza')">Adicionar</button></div>
+    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refrigerante')">Adicionar</button></div>
     <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
-    <div class="card"><h3>Refri</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refri')">Adicionar</button></div>
+    <div class="card"><h3>Pirulito</h3><p>R$ 0,50</p><button class="button" onclick="adicionar('Pirulito')">Adicionar</button></div>
   </div>
 
   <div class="container" id="carrinho">
@@ -132,10 +133,11 @@
   <script>
     const carrinho = {};
     const precos = {
-      'Cuscuz': 5.00,
-      'Mini pizza': 5.00,
+      'Pizza': 5.00,
+      'Bolo': 5.00,
+      'Refrigerante': 2.00,
       'Paçoca': 1.00,
-      'Refri': 2.00
+      'Pirulito': 0.50
     };
 
     function adicionar(nome) {
@@ -177,9 +179,7 @@
       const textoPedido = nomes.map(nome => `${nome} (x${carrinho[nome]})`).join('\n') +
         `\nTotal: R$ ${total.toFixed(2)}\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
       const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
-
-      // ✅ Número CORRETO
-      document.getElementById('linkWhatsapp').href = `https://wa.me/559884078358?text=${texto}`;
+      document.getElementById('linkWhatsapp').href = `https://wa.me/558998984078358?text=${texto}`;
     }
 
     function alterarQuantidade(nome, valor) {
