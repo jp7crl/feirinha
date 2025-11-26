@@ -88,13 +88,32 @@
       border-radius: 10px;
       border: 1px solid #ccc;
     }
+
+    /* Caixa de agradecimento */
+    #agradecimento {
+      background: #e6f0ff;
+      border-left: 5px solid #0055aa;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      font-size: 17px;
+      color: #003366;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Lanches do Nono</h1>
     <p>Sabores feitos com carinho para ajudar na minha formatura!</p>
   </header>
+
+  <!-- MENSAGEM DE AGRADECIMENTO -->
+  <div id="agradecimento">
+    Muito obrigado por apoiar nossa feirinha durante todo o ano! 💛<br>
+    Cada compra ajudou muito — vocês fizeram parte dessa conquista!
+  </div>
 
   <nav>
     <a href="#cardapio">Cardápio</a>
@@ -104,19 +123,23 @@
   <div class="container" id="cardapio">
     <h2>Cardápio da Semana</h2>
 
-    <div class="card"><h3>Pizza</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Pizza')">Adicionar</button></div>
-    <div class="card"><h3>Bolo</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Cuscuz</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Cuscuz')">Adicionar</button></div>
+    <div class="card"><h3>Bolo</h3><p>R$ 6,00</p><button class="button" onclick="adicionar('Bolo')">Adicionar</button></div>
+    <div class="card"><h3>Sucão</h3><p>R$ 4,00</p><button class="button" onclick="adicionar('Sucão')">Adicionar</button></div>
+    <div class="card"><h3>Pirulito</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Pirulito')">Adicionar</button></div>
+    <div class="card"><h3>Sanduíche natural</h3><p>R$ 5,00</p><button class="button" onclick="adicionar('Sanduíche natural')">Adicionar</button></div>
     <div class="card"><h3>Refrigerante</h3><p>R$ 2,00</p><button class="button" onclick="adicionar('Refrigerante')">Adicionar</button></div>
-    <div class="card"><h3>Paçoca</h3><p>R$ 1,00</p><button class="button" onclick="adicionar('Paçoca')">Adicionar</button></div>
-    <div class="card"><h3>Pirulito</h3><p>R$ 0,50</p><button class="button" onclick="adicionar('Pirulito')">Adicionar</button></div>
+
   </div>
 
   <div class="container" id="carrinho">
     <h2>Carrinho</h2>
     <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 10px;">
     <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno" style="padding:8px; width: 80%; max-width: 400px; margin-bottom: 20px;"><br>
+
     <div id="listaCarrinho">Seu carrinho está vazio.</div>
     <div id="totalCarrinho" style="margin-top:10px; font-weight:bold;"></div>
+
     <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
     <a class="button" id="linkWhatsapp" href="#" target="_blank" style="margin-left: 10px;">Enviar Pedido pelo WhatsApp</a>
 
@@ -133,11 +156,12 @@
   <script>
     const carrinho = {};
     const precos = {
-      'Pizza': 5.00,
-      'Bolo': 5.00,
-      'Refrigerante': 2.00,
-      'Paçoca': 1.00,
-      'Pirulito': 0.50
+      'Cuscuz': 5.00,
+      'Bolo': 6.00,
+      'Sucão': 4.00,
+      'Pirulito': 1.00,
+      'Sanduíche natural': 5.00,
+      'Refrigerante': 2.00
     };
 
     function adicionar(nome) {
@@ -178,8 +202,11 @@
       const turmaAluno = document.getElementById('turmaAluno').value;
       const textoPedido = nomes.map(nome => `${nome} (x${carrinho[nome]})`).join('\n') +
         `\nTotal: R$ ${total.toFixed(2)}\nAluno: ${nomeAluno}\nTurma: ${turmaAluno}`;
+
       const texto = encodeURIComponent("Olá! Gostaria de pedir:\n" + textoPedido);
-      document.getElementById('linkWhatsapp').href = `https://wa.me/558998984078358?text=${texto}`;
+
+      document.getElementById('linkWhatsapp').href =
+        `https://wa.me/558998984078358?text=${texto}`;
     }
 
     function alterarQuantidade(nome, valor) {
@@ -202,5 +229,6 @@
       }, 2000);
     }
   </script>
+
 </body>
 </html>
